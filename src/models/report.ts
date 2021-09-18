@@ -18,9 +18,12 @@ const ReportSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    users: {
+        type: [String],
+        default: [],
+    }
 });
 
 const ReportModel = mongoose.model('Report', ReportSchema);
-
 
 export default ReportModel;

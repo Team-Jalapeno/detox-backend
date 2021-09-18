@@ -16,4 +16,3 @@ const PageSchema = new mongoose.Schema({
 const PageModel = mongoose.model('Page', PageSchema);
 
 export default PageModel;
-

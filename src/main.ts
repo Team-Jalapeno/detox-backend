@@ -1,9 +1,11 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
 import routes from './routes';
+import connectDB from './models/connect';
 
 dotenv.config()
+
+connectDB(process.env.MONGO_URL);
 
 const PORT = process.env.PORT;
 

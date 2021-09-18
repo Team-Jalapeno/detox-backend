@@ -21,6 +21,27 @@ router.get("/report", async (req, res, next) => {
   }
 });
 
+router.post("/dummy", async (req, res, next) => {
+  const contentType = "Image";
+  const url = "www.badwebsite.com";
+  const vote = 70;
+  const selector = "some bad text";
+  const userId = "sampleUserID";
+  try {
+    const report = await ReportModel.create({
+      contentType,
+      url,
+      pageScore: vote,
+      vote,
+      selector,
+      users: [userId],
+    });
+    return res.send({ report });
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 router.post("/report", async (req, res, next) => {
   const url = req.body.url;
   const contentType = req.body.contentType;
@@ -39,7 +60,7 @@ router.post("/report", async (req, res, next) => {
         pageScore: vote,
         vote: vote,
         selector: selector,
-        $push: { users: userId },
+        users: [userId]
       });
       return res.send({ newReport });
     }
@@ -61,8 +82,8 @@ router.post("/report", async (req, res, next) => {
             pageScore: newScore,
             vote: vote,
             selector: selector,
-            $push: { users: userId },
           },
+          $push: { users: userId },
         },
         { new: true },
         (err, doc) => {

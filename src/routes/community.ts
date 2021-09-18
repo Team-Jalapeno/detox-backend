@@ -29,7 +29,7 @@ router.post("/report", async (req, res, next) => {
   const userId = req.body.userId.toString();
 
   try {
-    const report = await ReportModel.findOne({ url: url });
+    const report = await ReportModel.findOne({ url: url, selector: selector });
 
     // Create a new report if doesnt exist
     if (!report) {
@@ -46,17 +46,32 @@ router.post("/report", async (req, res, next) => {
 
     // If exists, make sure that user hasnt already voted
     if (report.users.length !== 0 && !report.users.includes(userId)) {
-
-    // Update score based on formula (for now mean)
-      const newScore = calculateScore(report.pageScore, vote, report.users.length);
-      const newReport = await ReportModel.create({
-        contentType: contentType,
-        url: url,
-        pageScore: vote,
-        vote: vote,
-        selector: selector,
-        $push: { users: userId },
-      });
+      // Update score based on formula (for now mean)
+      const newScore = calculateScore(
+        report.pageScore,
+        vote,
+        report.users.length
+      );
+      const newReport = await ReportModel.findOneAndUpdate(
+        { url: url, selector: selector },
+        {
+          $set: {
+            contentType: contentType,
+            url: url,
+            pageScore: newScore,
+            vote: vote,
+            selector: selector,
+            $push: { users: userId },
+          },
+        },
+        { new: true },
+        (err, doc) => {
+          if (err) {
+            console.log("Something wrong when updating the document");
+          }
+          console.log(doc);
+        }
+      );
       return res.send({ newReport });
     }
   } catch (e) {

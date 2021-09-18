@@ -1,15 +1,21 @@
 import mongoose from 'mongoose';
+import { DocSchema } from '../utils/interface';
 
 const ReportSchema = new mongoose.Schema({
     contentType: {
         type: String, // Either "text", "image", or "video"
         required: true
     },
-    pageId: {
-        type: new mongoose.Types.ObjectId(),
+    url: {
+        type: String,
         required: true,
+        unique: true,
     },
-    score: {
+    pageScore: {
+        type: Number,
+        default: 0,
+    },
+    vote: {
         type: Number,
         default: 0,
         required: true,
@@ -24,6 +30,6 @@ const ReportSchema = new mongoose.Schema({
     }
 });
 
-const ReportModel = mongoose.model('Report', ReportSchema);
+const ReportModel = mongoose.model<DocSchema>('Report', ReportSchema);
 
 export default ReportModel;

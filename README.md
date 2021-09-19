@@ -4,7 +4,7 @@
     <img src="https://github.com/Team-WhiteHatSr/detox-chrome-extension/blob/master/public/icon.png?raw=true" alt="Logo" width="80">
   </a>
 
-  <h3 align="center">detox-chrome-extension</h3>
+  <h3 align="center">detox-backend</h3>
 
   <p align="center">
     Keep your browsing free from sensitive content.

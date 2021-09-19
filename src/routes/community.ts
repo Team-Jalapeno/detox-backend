@@ -8,14 +8,15 @@ const router = express.Router();
 
 router.get("/report", async (req, res, next) => {
   try {
-    const url = req.body.url;
+    const url = req.query.url as string;
+    console.log(url);
     const reports = await ReportModel.find({ url: url });
 
     if (!reports) {
       return notFound(res, "Error: reports not found");
     }
 
-    return res.send({ reports });
+    return res.json({ reports });
   } catch (e) {
     return serverError(res, e.message);
   }
@@ -62,7 +63,7 @@ router.post("/report", async (req, res, next) => {
         selector: selector,
         users: [userId]
       });
-      return res.send({ newReport });
+      return res.json({ newReport });
     }
 
     // If exists, make sure that user hasnt already voted
@@ -93,7 +94,7 @@ router.post("/report", async (req, res, next) => {
           console.log(doc);
         }
       );
-      return res.send({ newReport });
+      return res.json({ newReport });
     }
   } catch (e) {
     return serverError(res, e.message);

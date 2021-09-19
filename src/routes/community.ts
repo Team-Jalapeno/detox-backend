@@ -61,7 +61,7 @@ router.post("/report", async (req, res, next) => {
         pageScore: vote,
         vote: vote,
         selector: selector,
-        users: [userId]
+        users: [userId],
       });
       return res.json({ newReport });
     }
@@ -74,6 +74,7 @@ router.post("/report", async (req, res, next) => {
         vote,
         report.users.length
       );
+      
       const newReport = await ReportModel.findOneAndUpdate(
         { url: url, selector: selector },
         {
@@ -86,18 +87,16 @@ router.post("/report", async (req, res, next) => {
           },
           $push: { users: userId },
         },
-        { new: true },
-        (err, doc) => {
-          if (err) {
-            console.log("Something wrong when updating the document");
-          }
-          console.log(doc);
-        }
+        { new: true }
       );
       return res.json({ newReport });
     }
+    return res.json({ error: true, msg: "you have already reported this" });
   } catch (e) {
-    return serverError(res, e.message);
+    console.log("error");
+    console.log(e);
+    // return serverError(res, e.message);
+    return res.json({error: true, msg: 'something went wrong'})
   }
 });
 

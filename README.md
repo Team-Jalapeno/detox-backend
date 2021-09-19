@@ -1,11 +1,101 @@
-# Detox-Backend
+<!-- PROJECT LOGO -->
+<p align="center">
+  <a href="https://github.com/Team-WhiteHatSr/detox-backend">
+    <img src="https://github.com/Team-WhiteHatSr/detox-chrome-extension/blob/master/public/icon.png?raw=true" alt="Logo" width="80">
+  </a>
 
-Backend written in Typescript Express for the Detox-chrome extension
+  <h3 align="center">detox-chrome-extension</h3>
 
-## API Reference
+  <p align="center">
+    Keep your browsing free from sensitive content.
+    <br />
+    <a href="https://github.com/Team-WhiteHatSr/detox-backend/#about-the-project"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="https://github.com/Team-WhiteHatSr/detox-backend/">View Demo</a>
+    ·
+    <a href="https://github.com/Team-WhiteHatSr/detox-backend/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/Team-WhiteHatSr/detox-backend/issues">Request Feature</a>
+  </p>
+</p>
 
-#### Check text to filter
 
+
+
+<!-- TABLE OF CONTENTS -->
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [About The Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Usage](#usage)
+  - [Response format](#response-format)
+  - [Ping](#ping)
+  - [Report](#report)
+  - [Response Format](#response-format-1)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+`Detox` is an AI-powered chrome-extension that lets you control what you see when you are browsing the web. With the help of `Detox`, you can choose to blur out obscene images, videos, and text, and concentrate on your work/scroll through social media peacefully.
+
+<p align="center">
+    <img src="https://github.com/Team-WhiteHatSr/detox-chrome-extension/raw/master/assets/demo-screenshot.png" width="250" style="text-align: center" />
+</p>
+
+On the chrome-extension popup, you can choose the strictness with which you want `Detox` to filter text and media on the webpage. You can also choose the type of content you want to filter by enabling/disabling switches on the extension. By default, text, images, and videos will be enabled.
+
+> `Detox` only uses Open-Source APIs and libraries. Image content detection is performed on the client-side. Text is sent to the server (the [source code](https://github.com/Team-WhiteHatSr/detox-backend) for which is also Open Source). However, the text sent to our servers is not stored and not linked to a user in any way.
+
+### Built With
+
+* [Typescript](https://www.typescriptlang.org/)
+* [googleapis](https://www.npmjs.com/package/googleapis)
+* [express](https://www.npmjs.com/package/express)
+* [mongoose](https://www.npmjs.com/package/mongoose)
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+* npm
+
+
+### Installation
+ 
+1. Clone the repo.
+```sh
+git clone https://github.com/Team-WhiteHatSr/detox-backend.git
+cd detox-backend
+```
+2. Install NPM packages.
+```sh
+npm install
+```
+3. Run the project.
+```sh
+npm run dev
+```
+
+<!-- USAGE EXAMPLES -->
+## Usage
+<br>
+
+Check text to filter
 ```http
   POST /check/text
 ```
@@ -14,7 +104,9 @@ Backend written in Typescript Express for the Detox-chrome extension
 | :-------- | :------- | :------------------------------ |
 | `body`    | `string` | **Required**. The text to check |
 
-##### Response format
+<br>
+
+### Response format
 
 ```json
 {
@@ -30,8 +122,9 @@ Backend written in Typescript Express for the Detox-chrome extension
   }
 }
 ```
+<br>
 
-#### Ping
+### Ping
 
 ```http
   GET /util/ping
@@ -41,7 +134,9 @@ Backend written in Typescript Express for the Detox-chrome extension
 | :-------- | :--- | :-------------------------------- |
 | none      | none | Returns `pong` if sever is active |
 
-#### Report
+<br>
+
+### Report
 
 ```http
   GET /community/report
@@ -51,7 +146,9 @@ Backend written in Typescript Express for the Detox-chrome extension
 | :-------- | :-------------------- | :-------------------------------------- |
 | url       | `string`, query param | URL of the website in question          |
 
-##### Response Format
+<br>
+
+### Response Format
 
 ```json
 {
@@ -82,20 +179,40 @@ Backend written in Typescript Express for the Detox-chrome extension
 | selector| `string` | CSS path of the element in the HTML page|
 | userId| `string` | unique id of extension, auto generated|
 
+<br>
 
-## Deployment
+<!-- ROADMAP -->
+## Roadmap
 
-To deploy this project run
+See the [open issues](https://github.com/Team-WhiteHatSr/detox-backend/issues) for a list of proposed features (and known issues).
 
-```bash
-  npm start
-```
+<br>
 
-## Demo
+<!-- CONTRIBUTING -->
+## Contributing
 
-[eng-hack](https://eng-hack.herokuapp.com)
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-## Authors
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'feat: Add some AmazingFeature'`)
+4. Push to the Branch (`git push -u origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
+
+<br>
+
+<!-- LICENSE -->
+## License
+
+Distributed under the MIT License. See [`LICENSE`](./LICENSE) for more information.
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 - [@thebongy](https://github.com/thebongy)
 - [@ashikka](https://github.com/ashikka)

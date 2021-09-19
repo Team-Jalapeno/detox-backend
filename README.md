@@ -93,7 +93,7 @@ npm run dev
 
 <!-- USAGE EXAMPLES -->
 ## Usage
-<br>
+
 
 Check text to filter
 ```http
@@ -104,7 +104,7 @@ Check text to filter
 | :-------- | :------- | :------------------------------ |
 | `body`    | `string` | **Required**. The text to check |
 
-<br>
+
 
 ### Response format
 
@@ -122,7 +122,7 @@ Check text to filter
   }
 }
 ```
-<br>
+
 
 ### Ping
 
@@ -134,7 +134,7 @@ Check text to filter
 | :-------- | :--- | :-------------------------------- |
 | none      | none | Returns `pong` if sever is active |
 
-<br>
+
 
 ### Report
 
@@ -146,7 +146,7 @@ Check text to filter
 | :-------- | :-------------------- | :-------------------------------------- |
 | url       | `string`, query param | URL of the website in question          |
 
-<br>
+
 
 ### Response Format
 
@@ -179,14 +179,14 @@ Check text to filter
 | selector| `string` | CSS path of the element in the HTML page|
 | userId| `string` | unique id of extension, auto generated|
 
-<br>
+
 
 <!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/Team-WhiteHatSr/detox-backend/issues) for a list of proposed features (and known issues).
 
-<br>
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -201,7 +201,7 @@ Contributions are what make the open source community such an amazing place to b
 
 You are requested to follow the contribution guidelines specified in [CONTRIBUTING.md](./CONTRIBUTING.md) while contributing to the project :smile:.
 
-<br>
+
 
 <!-- LICENSE -->
 ## License

@@ -23,17 +23,24 @@ router.post("/text", async (req, res, next) => {
             SEXUALLY_EXPLICIT: {},
             FLIRTATION: {},
         },
+        languages: ["en"]
     };
-
+    const scores: {[type: string]: any} = {};
+    try {
     const resp = (await client.comments.analyze(
         {
             key: process.env.PERSPECTIVE_API_KEY,
             resource: analyzeRequest,
         })).data;
-    const scores: {[type: string]: any} = {};
+    
 
     for (const attribute in resp['attributeScores']) {
         scores[attribute] = resp['attributeScores'][attribute]['summaryScore']['value'];
+    }
+    } catch (err) {
+        return res.json({
+            success: false,
+        });
     }
 
     res.json({

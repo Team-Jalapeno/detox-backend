@@ -21,7 +21,6 @@ router.post("/text", async (req, res, next) => {
             PROFANITY: {},
             THREAT: {},
             SEXUALLY_EXPLICIT: {},
-            FLIRTATION: {},
         },
         languages: ["en"]
     };
